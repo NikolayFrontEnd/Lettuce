@@ -1,0 +1,38 @@
+.signin__formbutton {
+  display: flex;
+  background: #a4d9b0;
+  width: 350px;
+  height: 48px;
+  opacity: 1;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  border: none;
+}
+.signin__formbutton__active {
+  display: flex;
+  width: 350px;
+  height: 48px;
+  opacity: 1;
+  border-radius: 8px;
+  padding: 12px 16px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  border: none;
+  background-color: #1ca139;
+}

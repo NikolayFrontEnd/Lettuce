@@ -1,0 +1,21 @@
+.toolbar__buutonsSwitch {
+  display: flex;
+  gap: 8px;
+}
+.toolbar__buttonChange {
+  display: flex;
+  background-color: #e7e5e5;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+  gap: 8px;
+  opacity: 1;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.toolbar__buttonChange:disabled {
+  background-color: #f8f8f8;
+  cursor: not-allowed;
+}

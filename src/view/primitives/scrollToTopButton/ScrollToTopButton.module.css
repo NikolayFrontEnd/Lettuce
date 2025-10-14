@@ -1,0 +1,15 @@
+.MainBlockConteiner__circleArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5831d;
+  width: 56px;
+  height: 56px;
+  padding: 12px;
+  gap: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

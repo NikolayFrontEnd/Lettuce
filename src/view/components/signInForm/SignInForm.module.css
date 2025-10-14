@@ -1,0 +1,13 @@
+.signin__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 448px;
+  height: 332px;
+  padding: 64px;
+  gap: 32px;
+  border-radius: 16px;
+  background: #ffffff;
+  margin-top: 40px;
+}

@@ -1,0 +1,29 @@
+.toolbar__selectWrapper {
+  position: relative;
+  display: inline-block;
+}
+.toolbar__selectWrapper::after {
+  content: "▼";
+  font-size: 12px;
+  color: #141414;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.toolbar__customselect {
+  cursor: pointer;
+  width: 96px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid #636363;
+  padding-left: 16px;
+  padding-right: 32px;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  color: #141414;
+  outline: none;
+  appearance: none;
+  background-color: white;
+}

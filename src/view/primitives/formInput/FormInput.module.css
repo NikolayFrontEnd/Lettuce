@@ -1,0 +1,28 @@
+.signin__forminputblock {
+  width: 320px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid #636363;
+  display: flex;
+  align-items: center;
+  padding: 4px 16px 4px 12px;
+  gap: 12px;
+}
+
+.signin__forminputicon {
+  width: 20px;
+  height: 20px;
+  color: #636363;
+  flex-shrink: 0;
+}
+
+.signin__forminput {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  font-family: Roboto;
+  font-size: 16px;
+  color: #141414;
+}
