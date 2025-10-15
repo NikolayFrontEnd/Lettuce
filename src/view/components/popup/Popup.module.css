@@ -1,0 +1,82 @@
+.MainBlockConteiner__modal {
+  width: 400px;
+  height: 228px;
+  opacity: 1;
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px 0px #0000000a;
+  background-color: #ffffff;
+  border: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.MainBlockConteiner__modal::backdrop {
+  background: rgba(0, 0, 0.1, 0.5);
+}
+.MainBlockConteiner__modalBlock {
+  position: relative;
+}
+.MainBlockConteiner__modalBlock__img {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.MainBlockConteiner__modalBlock__text {
+  padding-top: 68px;
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  vertical-align: middle;
+  color: #141414;
+  margin-bottom: 40px;
+}
+.MainBlockConteiner__buttonBlocks {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.MainBlockConteiner__buttonCancel {
+  width: 160px;
+  height: 48px;
+  opacity: 1;
+  border-radius: 8px;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  background-color: #f2f2f2;
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+.MainBlockConteiner__buttonAbort {
+  width: 160px;
+  height: 48px;
+  opacity: 1;
+  border-radius: 8px;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  background-color: #e5831d;
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: center;
+  border: none;
+}

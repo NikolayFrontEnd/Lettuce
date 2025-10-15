@@ -1,19 +1,10 @@
 import style from "./PageSizeSelector.module.css";
 
-type PageSizeSelectorProps = {
-  value: number;
-  onChange: (value: number) => void;
-};
-
-export const PageSizeSelector = ({
-  value,
-  onChange,
-}: PageSizeSelectorProps) => (
+export const PageSizeSelector = () => (
   <div className={style.toolbar__selectWrapper}>
     <select
       className={style.toolbar__customselect}
-      value={value}
-      onChange={(e) => onChange(Number(e.target.value))}
+      value={0}
     >
       <option value={10}>10</option>
       <option value={20}>20</option>

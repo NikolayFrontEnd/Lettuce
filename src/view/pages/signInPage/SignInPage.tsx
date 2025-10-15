@@ -6,8 +6,8 @@ import SignInLogoIcon from '../../primitives/icons/SignInLogoIcon';
 
 export const SignInPage = () => {
     
- const navigate = useNavigate();
- const [isFocused, setIsFocused] = useState<boolean>(false);
+/*  const navigate = useNavigate();
+ */ const [isFocused, setIsFocused] = useState<boolean>(false);
    
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,8 +28,8 @@ export const SignInPage = () => {
     } else {
       setError(false);
       setErrorLogPas(false);
-      navigate("/main");
-    }
+/*       navigate("/main");
+ */    }
   };
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);

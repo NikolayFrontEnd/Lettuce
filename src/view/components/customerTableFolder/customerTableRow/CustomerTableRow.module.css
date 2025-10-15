@@ -1,0 +1,46 @@
+.usertable__cell__status__circle {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #141414;
+  vertical-align: middle;
+  border-radius: 16px;
+  padding: 4px 8px;
+  text-align: center;
+  display: inline-block;
+  background-color: #f3fdf5;
+  width: 96px;
+}
+.usertable__cell__status__circle__success {
+  color: #1ca139;
+  background-color: #f3fdf5;
+}
+.usertable__cell__status__circle__failed {
+  color: #e53e3e;
+  background-color: #fdf3f3;
+}
+.usertable__userblock {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px 32px;
+  margin-top: 8px;
+}
+.usertable__cell {
+  width: 456px;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #141414;
+  vertical-align: middle;
+}
+.usertable__cell__status {
+  width: 456px;
+}

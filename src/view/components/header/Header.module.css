@@ -1,0 +1,122 @@
+.header {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  background-color: #fffefe;
+  gap: 32px;
+  opacity: 1;
+  border-radius: 16px;
+  padding-top: 24px;
+  padding-right: 32px;
+  padding-bottom: 24px;
+  padding-left: 32px;
+}
+
+.header__menu {
+  display: flex;
+  background-color: #f2f2f2;
+  border-radius: 16px;
+  gap: 8px;
+  opacity: 1;
+  padding: 8px;
+  overflow-x: auto;
+}
+.header__logo {
+  width: 140px;
+  height: 64px;
+  opacity: 1;
+  flex-shrink: 0;
+}
+
+.header__menu__item__active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e5831d;
+  width: 540px;
+  height: 48px;
+  border-radius: 8px;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  gap: 8px;
+  opacity: 1;
+  background-color: #ffffff;
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: center;
+  cursor: pointer;
+}
+.header__menu__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 540px;
+  height: 48px;
+  border-radius: 8px;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  gap: 8px;
+  opacity: 1;
+  cursor: pointer;
+}
+@media (max-width: 919px) {
+  .header__menu__item {
+    font-size: 14px;
+    width: 340px;
+  }
+
+  .header__menu__item__active {
+    font-size: 14px;
+    width: 340px;
+  }
+}
+@media (max-width: 600px) {
+  .header__menu__item {
+    font-size: 14px;
+    width: 280px;
+    height: 88px;
+  }
+
+  .header__menu__item__active {
+    font-size: 14px;
+    width: 280px;
+    height: 88px;
+  }
+}
+
+@media (max-width: 593px) {
+  .header__menu__item {
+    font-size: 14px;
+    height: 150px;
+  }
+
+  .header__menu__item__active {
+    font-size: 14px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 593px) {
+  .header__menu__item {
+    font-size: 14px;
+    height: 200px;
+  }
+
+  .header__menu__item__active {
+    font-size: 14px;
+    height: 200px;
+  }
+}
