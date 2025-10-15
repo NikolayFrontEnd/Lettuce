@@ -1,14 +1,13 @@
-import { useState } from 'react';
-import { SignInForm } from '../../components/signInForm/SignInForm'
-import style from './SignInPage.module.css'
-import { useNavigate } from 'react-router-dom';
-import SignInLogoIcon from '../../primitives/icons/SignInLogoIcon';
+import { useState } from "react";
+import { SignInForm } from "../../components/signInForm/SignInForm";
+import style from "./SignInPage.module.css";
+import { useNavigate } from "react-router-dom";
+import SignInLogoIcon from "../../primitives/icons/SignInLogoIcon";
 
 export const SignInPage = () => {
-    
-/*  const navigate = useNavigate();
- */ const [isFocused, setIsFocused] = useState<boolean>(false);
-   
+    const navigate = useNavigate();
+   const [isFocused, setIsFocused] = useState<boolean>(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -28,8 +27,9 @@ export const SignInPage = () => {
     } else {
       setError(false);
       setErrorLogPas(false);
-/*       navigate("/main");
- */    }
+             navigate("/main");
+       
+    }
   };
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -40,15 +40,15 @@ export const SignInPage = () => {
     if (error) setError(false);
   };
   const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused(false); 
+  const handleBlur = () => setIsFocused(false);
 
-    return (
-
+  return (
     <div className={style.signIn}>
       <div className={style.signin__logo}>
- <SignInLogoIcon/>
-       </div>
-        <SignInForm  email={email}
+        <SignInLogoIcon />
+      </div>
+      <SignInForm
+        email={email}
         password={password}
         error={error}
         errorLogPas={errorLogPas}
@@ -57,8 +57,8 @@ export const SignInPage = () => {
         onEmailChange={handleEmailChange}
         onPasswordChange={handlePasswordChange}
         onFocus={handleFocus}
-        onBlur={handleBlur}/>
-        </div>
-       
-    )
-}
+        onBlur={handleBlur}
+      />
+    </div>
+  );
+};

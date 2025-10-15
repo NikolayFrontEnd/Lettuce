@@ -1,5 +1,5 @@
-import ButtonExit from '../../primitives/icons/ButtonExit';
-import style from './Popup.module.css';
+import ButtonExit from "../../primitives/icons/ButtonExit";
+import style from "./Popup.module.css";
 
 type PopupProp = {
   isOpen: boolean;
@@ -10,27 +10,22 @@ type PopupProp = {
   cancelText: string;
 };
 
-
-export const Popup = (
-    {
+export const Popup = ({
   isOpen,
   onClose,
   onConfirm,
   title,
   confirmText,
   cancelText,
-}: PopupProp
-) => {
-    
- const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget)  onClose();
+}: PopupProp) => {
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) onClose();
   };
 
   if (!isOpen) return null;
 
-
-    return (
-  <div
+  return (
+    <div
       className={style.MainBlockConteiner__modal}
       onClick={handleBackdropClick}
     >
@@ -61,5 +56,5 @@ export const Popup = (
         </div>
       </div>
     </div>
-    )
-}
+  );
+};

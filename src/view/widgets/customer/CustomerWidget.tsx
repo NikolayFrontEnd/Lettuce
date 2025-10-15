@@ -1,34 +1,28 @@
 import { useEffect, useState } from "react";
-import { MembershipScheduledTable } from "../../components/membershipScheduledTableFolder/membershipScheduledTable/MembershipScheduledTable";
-import { Paginator } from "../../components/paginator/Paginator";
-import { Popup } from "../../components/popup/Popup";
-import style from "./ScheduledMembershipCancellation.module.css";
 import { useScrollToTop } from "../../../hooks/useScrollToTop";
+import { CustomerTable } from "../../components/customerTableFolder/customerTable/CustomerTable";
+import { Paginator } from "../../components/paginator/Paginator";
+import { RefreshButton } from "../../primitives/refreshButton/RefreshButton";
 import { ScrollToTopButton } from "../../primitives/scrollToTopButton/ScrollToTopButton";
-import { scheduledMembershipService } from "../../../domain/services/ScheduledMembershipService";
+import { SearchBar } from "../../primitives/searchBar/SearchBar";
+import style from "./Customer.module.css";
+import { customerService } from "../../../domain/services/CustomerService";
 import type { DataPage } from "../../../domain/entities/DataPage";
-import type { ScheduledMembershipCancelation } from "../../../domain/entities/MembershipCansellationScheduledEntity";
+import type { Customer } from "../../../domain/entities/CustomerEntity";
 
-export const ScheduledMembershipCancellation = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+export const CustomerWidget = () => {
   const { showButton, scrollToTop } = useScrollToTop();
 
-  const handleCloseModal = () => setModalOpen(false);
-  const handleConfirmModal = () => {
-    setModalOpen(false);
-  };
-
+  const [data, setData] = useState<DataPage<Customer> | null>(null);
   const [table, setTable] = useState({
     currentPage: 1,
     pageSize: 10,
   });
-  const [data, setData] =
-    useState<DataPage<ScheduledMembershipCancelation> | null>(null);
 
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const result = await scheduledMembershipService.getAllCustomers(
+        const result = await customerService.getAllCustomers(
           table.currentPage,
           table.pageSize,
         );
@@ -53,8 +47,10 @@ export const ScheduledMembershipCancellation = () => {
 
   return (
     <div className={style.MainBlockConteiner}>
-      <div className={style.toolbarNumber}>
+      <div className={style.toolbar}>
+        <SearchBar />
         <div className={style.toolbar__controls}>
+          <RefreshButton />
           <Paginator
             pageCount={data?.pageCount ?? 0}
             currentPage={table.currentPage}
@@ -62,22 +58,11 @@ export const ScheduledMembershipCancellation = () => {
             onPageSizeChange={handleTablePageSizeChange}
             pageSize={table.pageSize}
             totalItems={data?.itemCount ?? 0}
-          />
+          />{" "}
         </div>
       </div>
-
-      <MembershipScheduledTable data={data?.items ?? []} />
-
+      <CustomerTable data={data?.items ?? []} />
       <ScrollToTopButton visible={showButton} onClick={scrollToTop} />
-
-      <Popup
-        isOpen={modalOpen}
-        onClose={handleCloseModal}
-        onConfirm={handleConfirmModal}
-        title="Are you sure you want to abort this Scheduled Membership Cancellation?"
-        confirmText="Abort"
-        cancelText="Cancel"
-      />
     </div>
   );
 };

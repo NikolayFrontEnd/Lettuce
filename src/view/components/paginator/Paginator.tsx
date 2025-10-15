@@ -1,13 +1,33 @@
-import { PageSizeSelector } from '../../primitives/pageSizeSelector/PageSizeSelector'
-import { PaginationControl } from '../../primitives/paginationControls/PaginationConstrol'
-import { PaginatorInfo } from '../../primitives/paginatorInfo/PaginatorInfo'
-import style from './Paginator.module.css'
+import { PageSizeSelector } from "../../primitives/pageSizeSelector/PageSizeSelector";
+import { PaginationControl } from "../../primitives/paginationControls/PaginationConstrol";
+import { PaginationInfo } from "../../primitives/paginatorInfo/PaginatorInfo";
 
-export const Paginator = () => {
-    
-    return (<>
-<PaginationControl/>
-<PageSizeSelector/>
-<PaginatorInfo/>
-    </>)
-}
+type PaginatorProp = {
+  currentPage: number;
+  pageSize: number;
+  totalItems: number;
+  pageCount: number;
+  onPageChange: (page: number) => void;
+  onPageSizeChange: (pageSize: number) => void;
+};
+
+export const Paginator = ({
+  currentPage,
+  pageSize,
+  totalItems,
+  onPageChange,
+  onPageSizeChange,
+  pageCount,
+}: PaginatorProp) => {
+  return (
+    <>
+      <PaginationControl
+        currentPage={currentPage}
+        pageCount={pageCount}
+        onPageChange={onPageChange}
+      />
+      <PageSizeSelector value={pageSize} onChange={onPageSizeChange} />
+      <PaginationInfo current={pageSize} total={totalItems} />
+    </>
+  );
+};

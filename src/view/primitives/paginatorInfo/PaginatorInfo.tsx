@@ -1,14 +1,14 @@
-import style from './Paginator.module.css';
+import style from "./Paginator.module.css";
 
-export const PaginatorInfo = () => {
-    
-    return (
-        <>
-        <div className={style.toolbar__amount}>
-    <div className={style.toolbar__blockWithNumber}>{0}</div>
+type PaginationInfoProp = {
+  current: number;
+  total: number;
+};
+
+export const PaginationInfo = ({ current, total }: PaginationInfoProp) => (
+  <div className={style.toolbar__amount}>
+    <div className={style.toolbar__blockWithNumber}>{current}</div>
     <div>of</div>
-    <div>{0}</div>
-  </div>  
-        </>
-    )
-}
+    <div>{total}</div>
+  </div>
+);

@@ -20,7 +20,6 @@ export default function FormInput({
   onFocus,
   onBlur,
 }: FormInputProps) {
-    
   const handleFocus = () => {
     if (onFocus) {
       onFocus();

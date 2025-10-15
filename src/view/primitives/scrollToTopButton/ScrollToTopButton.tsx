@@ -13,7 +13,7 @@ export const ScrollToTopButton = ({
 
   return (
     <div onClick={onClick} className={style.MainBlockConteiner__circleArrow}>
-       <GoUpIcon /> 
-</div>
+      <GoUpIcon />
+    </div>
   );
 };

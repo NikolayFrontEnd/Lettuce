@@ -1,0 +1,60 @@
+.MainBlockConteiner {
+  background-color: white;
+  margin: 10px;
+  border-radius: 16px;
+  padding: 10px;
+}
+.usertable__buttonAbort {
+  border: none;
+  width: 178px;
+  height: 48px;
+  opacity: 1;
+  border-radius: 8px;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  background-color: #fdf5eb;
+  color: #e5831d;
+  cursor: pointer;
+}
+.usertable__button {
+  width: 178px;
+  height: 48px;
+  opacity: 1;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: none;
+  cursor: pointer;
+  color: #da1919;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  text-align: center;
+  background-color: #d600000a;
+}
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.toolbarNumber {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.toolbar__controls {
+  display: flex;
+  gap: 18px;
+}
+@media (max-width: 919px) {
+  .toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

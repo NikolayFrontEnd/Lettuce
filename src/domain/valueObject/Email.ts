@@ -16,5 +16,6 @@ export class Email {
     if (!value.trim()) {
       return false;
     }
-return /.+@.+/.test(value);  }
+    return /.+@.+/.test(value);
+  }
 }

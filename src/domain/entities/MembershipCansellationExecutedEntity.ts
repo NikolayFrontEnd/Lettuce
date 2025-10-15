@@ -51,8 +51,6 @@ export class ExecutedMembershipCancelation {
   }
 
   get createdAt(): string {
-    return this._createdAt;
+    return new Date(this._createdAt).toLocaleDateString();
   }
 }
-
-

@@ -1,10 +1,18 @@
-import { CustomerTableHeader } from "../customerTableHeader/CustomerTableHeader"
+import type { Customer } from "../../../../domain/entities/CustomerEntity";
+import { CustomerTableHeader } from "../customerTableHeader/CustomerTableHeader";
+import { CustomerTableRow } from "../customerTableRow/CustomerTableRow";
 
-export const CustomerTable = () => {
-    
-    return (
-      <>
-      <CustomerTableHeader/>
-      </>  
-    )
+interface CustomerTableProp {
+  data: Customer[];
 }
+
+export const CustomerTable = ({ data }: CustomerTableProp) => {
+  return (
+    <>
+      <CustomerTableHeader />
+      {data.map((customer) => (
+        <CustomerTableRow key={customer.id} customer={customer} />
+      ))}{" "}
+    </>
+  );
+};

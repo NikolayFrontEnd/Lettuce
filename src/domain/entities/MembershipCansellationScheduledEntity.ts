@@ -47,5 +47,3 @@ export class ScheduledMembershipCancelation {
     return this._executedAt;
   }
 }
-
-

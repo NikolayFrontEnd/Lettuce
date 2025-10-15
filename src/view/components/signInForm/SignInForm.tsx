@@ -1,10 +1,10 @@
-import { Button } from '../../primitives/buttonForm/Button'
-import { ErrorMessage } from '../../primitives/errorMessage/ErrorMessage';
-import FormInput from '../../primitives/formInput/FormInput';
-import LockIcon from '../../primitives/icons/LockIcon';
-import style from './SignInForm.module.css'
+import { Button } from "../../primitives/buttonForm/Button";
+import { ErrorMessage } from "../../primitives/errorMessage/ErrorMessage";
+import FormInput from "../../primitives/formInput/FormInput";
+import LockIcon from "../../primitives/icons/LockIcon";
+import style from "./SignInForm.module.css";
 
-interface SigninFormProp{
+interface SigninFormProp {
   email: string;
   password: string;
   error: boolean;
@@ -29,43 +29,42 @@ export const SignInForm = ({
   onFocus,
   onBlur,
 }: SigninFormProp) => {
-    
-    return (
-        <>
-        <form onSubmit={onSubmit} className={style.signin__form}>
-<div className={style.signin__formtitle}>Sign in</div>
-<FormInput
-        value={password}
-        onChange={onPasswordChange}
-        placeholder="Password"
-        type="password"
-        icon={<LockIcon />}
-        onFocus={onFocus}
-        onBlur={onBlur}
-/>
+  return (
+    <>
+      <form onSubmit={onSubmit} className={style.signin__form}>
+        <div className={style.signin__formtitle}>Sign in</div>
+        <FormInput
+          value={password}
+          onChange={onPasswordChange}
+          placeholder="Password"
+          type="password"
+          icon={<LockIcon />}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />
 
-<FormInput
-        value={email}
-        onChange={onEmailChange}
-        placeholder="Email"
-        onFocus={onFocus}
-        onBlur={onBlur}
-/>
+        <FormInput
+          value={email}
+          onChange={onEmailChange}
+          placeholder="Email"
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />
 
-<ErrorMessage
-        errorLogPas=""
-        message="Invalid login format!"
-        visible={error}
-/>
+        <ErrorMessage
+          errorLogPas=""
+          message="Invalid login format!"
+          visible={error}
+        />
 
-<ErrorMessage
-        errorLogPas="Incorrect login or password!"
-        message=""
-        visible={errorLogPas}
-/>
+        <ErrorMessage
+          errorLogPas="Incorrect login or password!"
+          message=""
+          visible={errorLogPas}
+        />
 
-<Button text = "Sign in" activeBtn={isFocused}/>
-        </form>
-        </>
-    )
-}
+        <Button text="Sign in" activeBtn={isFocused} />
+      </form>
+    </>
+  );
+};
