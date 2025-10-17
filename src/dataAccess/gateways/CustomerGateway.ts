@@ -1,16 +1,47 @@
 import axios from "axios";
-import type { CustomersDto } from "../../domain/dtos/CustomerDto";
+import type { CustomersDto } from "../dtos/CustomerDto";
+import { Email } from "../../domain/valueObject/Email";
+import { Customer } from "../../domain/entities/Customer";
+import { DataPage } from "../../domain/valueObject/DataPage";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export class CustomerGateway {
-  async getAll(page: number, pageSize: number): Promise<CustomersDto> {
+  async getAll(page: number, pageSize: number): Promise<DataPage<Customer>> {
     try {
       const { data } = await axios.get<CustomersDto>(
-        `https://dev.api.admin.lettucedispo.com/members?search_text=%22%22&page=${page}&page_size=${pageSize}`,
+      `${API_BASE_URL}/members`,
+      {
+        params:{
+          search_text:"",
+          page:page,
+          page_size:pageSize,
+        },
+      }
       );
-      return data;
+     
+const customers = data.items.map((item) => {
+        const email = item.email ? new Email(item.email) : null;
+        return new Customer(
+          item.id,
+          item.first_name,
+          item.last_name,
+          email,
+          item.phone_number,
+        );
+      });
+
+      return new DataPage<Customer>(
+        customers,
+        data.item_count,
+        data.page,
+        data.page_count,
+      );
+
     } catch (err) {
-      console.log(err);
       throw new Error("Failed to fetch customers");
     }
   }
 }
 export const customerGateway = new CustomerGateway();
+
+

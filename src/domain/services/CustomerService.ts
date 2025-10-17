@@ -1,32 +1,13 @@
 import { customerGateway } from "../../dataAccess/gateways/CustomerGateway";
-import { Customer, type CustomerCollection } from "../entities/CustomerEntity";
-import { DataPage } from "../entities/DataPage";
-import { Email } from "../valueObject/Email";
+import type { Customer } from "../entities/Customer";
+import type { DataPage } from "../valueObject/DataPage";
+
 
 export class CustomerService {
-  async getAllCustomers(
-    page: number,
-    pageSize: number,
-  ): Promise<CustomerCollection> {
-    const dto = await customerGateway.getAll(page, pageSize);
-
-    const customers = dto.items.map(
-      (item) =>
-        new Customer(
-          item.id,
-          item.first_name,
-          item.last_name,
-          item.email ? new Email(item.email) : null,
-          item.phone_number,
-        ),
-    );
-
-    return new DataPage<Customer>(
-      customers,
-      dto.item_count,
-      dto.page,
-      dto.page_count,
-    );
+  async getAllCustomers(page: number, pageSize: number): Promise<DataPage<Customer>> {
+    return  customerGateway.getAll(page, pageSize);
   }
 }
+
 export const customerService = new CustomerService();
+

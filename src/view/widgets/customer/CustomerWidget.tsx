@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useScrollToTop } from "../../../hooks/useScrollToTop";
-import { CustomerTable } from "../../components/customerTableFolder/customerTable/CustomerTable";
 import { Paginator } from "../../components/paginator/Paginator";
 import { RefreshButton } from "../../primitives/refreshButton/RefreshButton";
 import { ScrollToTopButton } from "../../primitives/scrollToTopButton/ScrollToTopButton";
 import { SearchBar } from "../../primitives/searchBar/SearchBar";
 import style from "./Customer.module.css";
 import { customerService } from "../../../domain/services/CustomerService";
-import type { DataPage } from "../../../domain/entities/DataPage";
-import type { Customer } from "../../../domain/entities/CustomerEntity";
+import type { DataPage } from "../../../domain/valueObject/DataPage";
+import type { Customer } from "../../../domain/entities/Customer";
+import { CustomerTable } from "../../components/customerTable/CustomerTable";
 
 export const CustomerWidget = () => {
   const { showButton, scrollToTop } = useScrollToTop();
@@ -35,7 +35,6 @@ export const CustomerWidget = () => {
     fetchCustomers();
   }, [table.currentPage, table.pageSize]);
 
-  console.log(data);
 
   const handleTableChange = (page: number) => {
     setTable((prev) => ({ ...prev, currentPage: page }));

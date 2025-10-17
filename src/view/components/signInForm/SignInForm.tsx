@@ -4,7 +4,7 @@ import FormInput from "../../primitives/formInput/FormInput";
 import LockIcon from "../../primitives/icons/LockIcon";
 import style from "./SignInForm.module.css";
 
-interface SigninFormProp {
+interface SigninFormProps {
   email: string;
   password: string;
   error: boolean;
@@ -28,7 +28,7 @@ export const SignInForm = ({
   onPasswordChange,
   onFocus,
   onBlur,
-}: SigninFormProp) => {
+}: SigninFormProps) => {
   return (
     <>
       <form onSubmit={onSubmit} className={style.signin__form}>

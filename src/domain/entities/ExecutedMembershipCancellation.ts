@@ -1,6 +1,6 @@
 import { Email } from "../valueObject/Email";
 
-export class ExecutedMembershipCancelation {
+export class ExecutedMembershipCancellation {
   private _id: string;
   private _firstName: string;
   private _lastName: string;
@@ -46,6 +46,7 @@ export class ExecutedMembershipCancelation {
   get emailAddressString(): string | null {
     return this._emailAddress ? this._emailAddress.toString() : null;
   }
+  
   get outcome(): string {
     return this._outcome;
   }

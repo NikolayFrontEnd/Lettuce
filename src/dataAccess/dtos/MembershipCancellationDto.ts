@@ -1,4 +1,4 @@
-export interface MemberShipCansellationScheduledDto {
+export interface MemberShipScheduledDto {
   items: {
     id: string;
     member: {
@@ -19,7 +19,7 @@ export interface MemberShipCansellationScheduledDto {
   page_count: number;
 }
 
-export interface MemberShipCansellationExecutedDto {
+export interface MemberShipExecutedDto {
   items: {
     id: string;
     member: {

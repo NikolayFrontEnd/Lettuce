@@ -1,7 +1,7 @@
 import ButtonExit from "../../primitives/icons/ButtonExit";
 import style from "./Popup.module.css";
 
-type PopupProp = {
+type PopupProps = {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
@@ -17,7 +17,7 @@ export const Popup = ({
   title,
   confirmText,
   cancelText,
-}: PopupProp) => {
+}: PopupProps) => {
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) onClose();
   };

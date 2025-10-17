@@ -2,12 +2,12 @@ import type { PageType } from "../../pages/mainPage/MainPage";
 import HeaderIcon from "../../primitives/icons/HeaderIcon";
 import style from "./Header.module.css";
 
-interface HeaderProp {
+interface HeaderProps {
   page: PageType;
   changePage: (page: PageType) => void;
 }
 
-export const Header = ({ page, changePage }: HeaderProp) => {
+export const Header = ({ page, changePage }: HeaderProps) => {
   return (
     <div className={style.header}>
       <div className={style.header__logo}>

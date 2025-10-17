@@ -1,8 +1,8 @@
-import type { ExecutedMembershipCancelation } from "../../../../domain/entities/MembershipCansellationExecutedEntity";
+import type { ExecutedMembershipCancellation } from "../../../../domain/entities/ExecutedMembershipCancellation";
 import style from "./MembershipExecutedTableRow.module.css";
 
 interface MembershipExecutedTableRowProps {
-  data: ExecutedMembershipCancelation;
+  data: ExecutedMembershipCancellation;
 }
 
 export const MembershipExecutedTableRow = ({

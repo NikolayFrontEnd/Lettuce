@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { MembershipScheduledTable } from "../../components/membershipScheduledTableFolder/membershipScheduledTable/MembershipScheduledTable";
 import { Paginator } from "../../components/paginator/Paginator";
 import { Popup } from "../../components/popup/Popup";
 import style from "./ScheduledMembershipCancellation.module.css";
 import { useScrollToTop } from "../../../hooks/useScrollToTop";
 import { ScrollToTopButton } from "../../primitives/scrollToTopButton/ScrollToTopButton";
 import { scheduledMembershipService } from "../../../domain/services/ScheduledMembershipService";
-import type { DataPage } from "../../../domain/entities/DataPage";
-import type { ScheduledMembershipCancelation } from "../../../domain/entities/MembershipCansellationScheduledEntity";
+import type { DataPage } from "../../../domain/valueObject/DataPage";
+import type { ScheduledMembershipCancellation } from "../../../domain/entities/ScheduledMembershipCancellation";
+import { MembershipScheduledTable } from "../../components/membershipScheduledTable/MembershipScheduledTable";
 
-export const ScheduledMembershipCancellation = () => {
+export const ScheduledMembershipCancellationWidget = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const { showButton, scrollToTop } = useScrollToTop();
 
@@ -23,7 +23,7 @@ export const ScheduledMembershipCancellation = () => {
     pageSize: 10,
   });
   const [data, setData] =
-    useState<DataPage<ScheduledMembershipCancelation> | null>(null);
+    useState<DataPage<ScheduledMembershipCancellation> | null>(null);
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -41,7 +41,6 @@ export const ScheduledMembershipCancellation = () => {
     fetchCustomers();
   }, [table.currentPage, table.pageSize]);
 
-  console.log(data);
 
   const handleTableChange = (page: number) => {
     setTable((prev) => ({ ...prev, currentPage: page }));

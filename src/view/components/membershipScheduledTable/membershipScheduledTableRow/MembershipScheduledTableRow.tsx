@@ -1,13 +1,13 @@
-import type { ScheduledMembershipCancelation } from "../../../../domain/entities/MembershipCansellationScheduledEntity";
+import type { ScheduledMembershipCancellation } from "../../../../domain/entities/ScheduledMembershipCancellation";
 import style from "./MembershipScheduledTableRow.module.css";
 
-interface MembershipScheduledTableRowProp {
-  cancellation: ScheduledMembershipCancelation;
+interface MembershipScheduledTableRowProps {
+  cancellation: ScheduledMembershipCancellation;
 }
 
 export const MembershipScheduledTableRow = ({
   cancellation,
-}: MembershipScheduledTableRowProp) => {
+}: MembershipScheduledTableRowProps) => {
   return (
     <div className={style.usertable__userblock}>
       <div className={style.usertable__cell}>

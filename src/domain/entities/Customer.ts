@@ -1,5 +1,4 @@
 import { Email } from "../valueObject/Email";
-import type { DataPage } from "./DataPage";
 
 export class Customer {
   private _id: string;
@@ -43,4 +42,3 @@ export class Customer {
   }
 }
 
-export type CustomerCollection = DataPage<Customer>;

@@ -4,7 +4,7 @@ import FirstIcon from "../icons/FirstIcon";
 import LastIcon from "../icons/LastIcon";
 import style from "./PaginationControl.module.css";
 
-type PaginationControlsProp = {
+type PaginationControlsProps = {
   currentPage: number;
   pageCount: number;
   onPageChange: (page: number) => void;
@@ -14,7 +14,7 @@ export const PaginationControl = ({
   currentPage,
   pageCount,
   onPageChange,
-}: PaginationControlsProp) => {
+}: PaginationControlsProps) => {
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === pageCount;
 

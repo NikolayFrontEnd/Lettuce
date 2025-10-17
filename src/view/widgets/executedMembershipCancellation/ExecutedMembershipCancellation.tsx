@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useScrollToTop } from "../../../hooks/useScrollToTop";
-import { MembershipExecutedTable } from "../../components/membershipExecutedTableFolder/membershipExecutedTable/MembershipExecutedTable";
 import { Paginator } from "../../components/paginator/Paginator";
 import { ScrollToTopButton } from "../../primitives/scrollToTopButton/ScrollToTopButton";
 import style from "./ExecutedMembershipCancellation.module.css";
-import type { DataPage } from "../../../domain/entities/DataPage";
-import type { ExecutedMembershipCancelation } from "../../../domain/entities/MembershipCansellationExecutedEntity";
+import type { DataPage } from "../../../domain/valueObject/DataPage";
 import { executedMembershipService } from "../../../domain/services/ExecutedMembershipService";
+import type { ExecutedMembershipCancellation } from "../../../domain/entities/ExecutedMembershipCancellation";
+import { MembershipExecutedTable } from "../../components/membershipExecutedTable/MembershipExecutedTable";
 
-export const ExecutedMembershipCancellation = () => {
+export const ExecutedMembershipCancellationWidget = () => {
   const { showButton, scrollToTop } = useScrollToTop();
   const [table, setTable] = useState({
     currentPage: 1,
@@ -16,7 +16,7 @@ export const ExecutedMembershipCancellation = () => {
   });
 
   const [data, setData] =
-    useState<DataPage<ExecutedMembershipCancelation> | null>(null);
+    useState<DataPage<ExecutedMembershipCancellation> | null>(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,7 +33,6 @@ export const ExecutedMembershipCancellation = () => {
     fetchData();
   }, [table.currentPage, table.pageSize]);
 
-  console.log(data);
 
   const handleTableChange = (page: number) => {
     setTable((prev) => ({ ...prev, currentPage: page }));

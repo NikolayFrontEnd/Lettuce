@@ -1,11 +1,11 @@
 import style from "./PageSizeSelector.module.css";
 
-type PageSizeSelectorProp = {
+type PageSizeSelectorProps = {
   value: number;
   onChange: (value: number) => void;
 };
 
-export const PageSizeSelector = ({ value, onChange }: PageSizeSelectorProp) => (
+export const PageSizeSelector = ({ value, onChange }: PageSizeSelectorProps) => (
   <div className={style.toolbar__selectWrapper}>
     <select
       className={style.toolbar__customselect}

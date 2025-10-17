@@ -2,7 +2,7 @@ import { PageSizeSelector } from "../../primitives/pageSizeSelector/PageSizeSele
 import { PaginationControl } from "../../primitives/paginationControls/PaginationConstrol";
 import { PaginationInfo } from "../../primitives/paginatorInfo/PaginatorInfo";
 
-type PaginatorProp = {
+type PaginatorProps = {
   currentPage: number;
   pageSize: number;
   totalItems: number;
@@ -18,7 +18,7 @@ export const Paginator = ({
   onPageChange,
   onPageSizeChange,
   pageCount,
-}: PaginatorProp) => {
+}: PaginatorProps) => {
   return (
     <>
       <PaginationControl

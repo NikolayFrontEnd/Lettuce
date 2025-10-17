@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Header } from "../../components/header/Header";
-import { ExecutedMembershipCancellation } from "../../widgets/executedMembershipCancellation/ExecutedMembershipCancellation";
-import { ScheduledMembershipCancellation } from "../../widgets/scheduledMembershipCancellation/ScheduledMembershipCancellation";
 import { CustomerWidget } from "../../widgets/customer/CustomerWidget";
+import { ScheduledMembershipCancellationWidget } from "../../widgets/scheduledMembershipCancellation/ScheduledMembershipCancellation";
+import { ExecutedMembershipCancellationWidget } from "../../widgets/executedMembershipCancellation/ExecutedMembershipCancellation";
 export type PageType = 0 | 1 | 2;
 export const MainPage = () => {
   const [page, setPage] = useState<PageType>(0);
@@ -13,8 +13,8 @@ export const MainPage = () => {
     <>
       <Header page={page} changePage={changePage} />
       {page === 0 && <CustomerWidget />}
-      {page === 1 && <ScheduledMembershipCancellation />}
-      {page === 2 && <ExecutedMembershipCancellation />}
+      {page === 1 && <ScheduledMembershipCancellationWidget />}
+      {page === 2 && <ExecutedMembershipCancellationWidget />}
     </>
   );
 };

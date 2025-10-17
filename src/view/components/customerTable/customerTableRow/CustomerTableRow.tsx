@@ -1,11 +1,11 @@
-import type { Customer } from "../../../../domain/entities/CustomerEntity";
+import type { Customer } from "../../../../domain/entities/Customer";
 import style from "./CustomerTableRow.module.css";
 
-interface CustomerTableRowProp {
+interface CustomerTableRowProps {
   customer: Customer;
 }
 
-export const CustomerTableRow = ({ customer }: CustomerTableRowProp) => {
+export const CustomerTableRow = ({ customer }: CustomerTableRowProps) => {
   return (
     <div className={style.usertable__userblock}>
       <div className={style.usertable__cell}>

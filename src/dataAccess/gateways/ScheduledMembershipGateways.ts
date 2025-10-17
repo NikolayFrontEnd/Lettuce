@@ -1,18 +1,47 @@
 import axios from "axios";
-import type { MemberShipCansellationScheduledDto } from "../../domain/dtos/MembershipCancellationDto";
+import type { MemberShipScheduledDto } from "../dtos/MembershipCancellationDto";
+import { Email } from "../../domain/valueObject/Email";
+import { DataPage } from "../../domain/valueObject/DataPage";
+import { ScheduledMembershipCancellation } from "../../domain/entities/ScheduledMembershipCancellation";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export class ScheduledMembershipCancelattionGateway {
   async getAll(
     page: number,
     pageSize: number,
-  ): Promise<MemberShipCansellationScheduledDto> {
+  ): Promise<DataPage<ScheduledMembershipCancellation>> {
     try {
-      const { data } = await axios.get<MemberShipCansellationScheduledDto>(
-        `https://dev.api.admin.lettucedispo.com/scheduled_members?status=scheduled&page=${page}&page_size=${pageSize}`,
+      const { data } = await axios.get<MemberShipScheduledDto>(
+        `${API_BASE_URL}/scheduled_members`,
+        {
+          params: {
+            status: "scheduled",
+            page,
+            page_size: pageSize,
+          },
+        }
       );
-      return data;
-    } catch (err) {
-      console.log(err);
+
+      const items = data.items.map((item) => {
+        const email = item.member.email ? new Email(item.member.email) : null;
+        return new ScheduledMembershipCancellation(
+          item.id,
+          item.member.first_name,
+          item.member.last_name,
+          item.member.phone,
+          email,
+          item.executed_at,
+        );
+      });
+
+      return new DataPage<ScheduledMembershipCancellation>(
+        items,
+        data.item_count,
+        data.page,
+        data.page_count,
+      );
+    } catch {
       throw new Error("Failed to fetch scheduled memberships");
     }
   }

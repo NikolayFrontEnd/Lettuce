@@ -1,11 +1,11 @@
 import style from "./Button.module.css";
 
-interface ButtonProp {
+interface ButtonProps {
   text: string;
   activeBtn: boolean;
 }
 
-export const Button = ({ text, activeBtn }: ButtonProp) => {
+export const Button = ({ text, activeBtn }: ButtonProps) => {
   return (
     <>
       <button

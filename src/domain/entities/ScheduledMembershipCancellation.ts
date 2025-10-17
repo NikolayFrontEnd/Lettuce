@@ -1,6 +1,6 @@
 import { Email } from "../valueObject/Email";
 
-export class ScheduledMembershipCancelation {
+export class ScheduledMembershipCancellation {
   private _id: string;
   private _firstName: string;
   private _lastName: string;
