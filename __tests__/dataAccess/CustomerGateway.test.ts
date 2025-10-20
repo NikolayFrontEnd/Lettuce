@@ -38,8 +38,8 @@ describe("CustomerGateway", () => {
         search_text: "",
         page: 1,
         page_size: 10,
-      },
-    });
+      }
+    })
 
     const expectedCustomer = new Customer(
       "1",
