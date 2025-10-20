@@ -49,11 +49,9 @@ describe("ExecutedMembershipGateway", () => {
       "123456",
       new Email("john@example.com"),
       "success",
-      "2023-01-01T00:00:00Z"
+      "2023-01-01T00:00:00Z",
     );
-
     const expectedDataPage = new DataPage([expectedItem], 1, 1, 1);
-
     expect(result).toEqual(expectedDataPage);
   });
 });
