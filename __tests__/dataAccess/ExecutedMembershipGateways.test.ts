@@ -1,12 +1,14 @@
 import { describe, expect, vi,it } from "vitest";
 import axios from "axios";
 import { ExecutedMembershipGateway } from "../../src/dataAccess/gateways/ExecutedMembershipGateways";
+import { Email } from "../../src/domain/valueObjects/Email";
+import { DataPage } from "../../src/domain/valueObjects/DataPage";
+import { ExecutedMembershipCancellation } from "../../src/domain/entities/ExecutedMembershipCancellation";
 
 vi.mock("axios");
 
 describe("ExecutedMembershipGateway", () => {
   it("getAll calls correct endpoint and constructs entities correctly", async () => {
-    // 1. Подготавливаем мок данных
     const mockResponse = {
       data: {
         items: [
@@ -34,15 +36,12 @@ describe("ExecutedMembershipGateway", () => {
     const testBaseUrl = "http://test-api.com";
     const gateway = new ExecutedMembershipGateway(testBaseUrl);
 
-    // 2. Вызываем метод
     const result = await gateway.getAll(1, 10);
 
-    // 3. Проверяем правильность вызова endpoint
     expect(axios.get).toHaveBeenCalledWith(`${testBaseUrl}/scheduled_members`, {
       params: { status: "executed", page: 1, page_size: 10 },
     });
 
-    // 4. Проверяем корректную конструкцию entity
     const expectedItem = new ExecutedMembershipCancellation(
       "1",
       "John",
