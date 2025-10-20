@@ -3,7 +3,7 @@ import { useScrollToTop } from "../../../hooks/useScrollToTop";
 import { Paginator } from "../../components/paginator/Paginator";
 import { ScrollToTopButton } from "../../primitives/scrollToTopButton/ScrollToTopButton";
 import style from "./ExecutedMembershipCancellation.module.css";
-import type { DataPage } from "../../../domain/valueObject/DataPage";
+import type { DataPage } from "../../../domain/valueObjects/DataPage";
 import { executedMembershipService } from "../../../domain/services/ExecutedMembershipService";
 import type { ExecutedMembershipCancellation } from "../../../domain/entities/ExecutedMembershipCancellation";
 import { MembershipExecutedTable } from "../../components/membershipExecutedTable/MembershipExecutedTable";
@@ -29,7 +29,6 @@ export const ExecutedMembershipCancellationWidget = () => {
         console.error("Error fetching data:", err);
       }
     };
-
     fetchData();
   }, [table.currentPage, table.pageSize]);
 

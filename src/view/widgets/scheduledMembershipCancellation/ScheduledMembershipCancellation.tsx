@@ -5,7 +5,7 @@ import style from "./ScheduledMembershipCancellation.module.css";
 import { useScrollToTop } from "../../../hooks/useScrollToTop";
 import { ScrollToTopButton } from "../../primitives/scrollToTopButton/ScrollToTopButton";
 import { scheduledMembershipService } from "../../../domain/services/ScheduledMembershipService";
-import type { DataPage } from "../../../domain/valueObject/DataPage";
+import type { DataPage } from "../../../domain/valueObjects/DataPage";
 import type { ScheduledMembershipCancellation } from "../../../domain/entities/ScheduledMembershipCancellation";
 import { MembershipScheduledTable } from "../../components/membershipScheduledTable/MembershipScheduledTable";
 

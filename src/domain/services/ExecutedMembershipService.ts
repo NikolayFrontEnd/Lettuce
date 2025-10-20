@@ -1,6 +1,6 @@
 import { executedMembershipCancelattionGateway } from "../../dataAccess/gateways/ExecutedMembershipGateways";
 import type { ExecutedMembershipCancellation } from "../entities/ExecutedMembershipCancellation";
-import { DataPage } from "../valueObject/DataPage";
+import { DataPage } from "../valueObjects/DataPage";
 
 export class ExecutedMembershipService {
   async getAllCustomers(

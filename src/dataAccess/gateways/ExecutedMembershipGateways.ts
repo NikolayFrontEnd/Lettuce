@@ -1,19 +1,23 @@
 import axios from "axios";
 import type { MemberShipExecutedDto } from "../dtos/MembershipCancellationDto";
-import { Email } from "../../domain/valueObject/Email";
-import { DataPage } from "../../domain/valueObject/DataPage";
+import { Email } from "../../domain/valueObjects/Email";
+import { DataPage } from "../../domain/valueObjects/DataPage";
 import { ExecutedMembershipCancellation } from "../../domain/entities/ExecutedMembershipCancellation";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export class ExecutedMembershipGateways {
+export class ExecutedMembershipGateway {
+  private API_BASE_URL: string;
+  constructor(baseUrl?: string) {
+    this.API_BASE_URL = baseUrl || import.meta.env.VITE_API_BASE_URL || '';
+  }
+
   async getAll(
     page: number,
     pageSize: number,
   ): Promise<DataPage<ExecutedMembershipCancellation>> {
     try {
       const { data } = await axios.get<MemberShipExecutedDto>(
-        `${API_BASE_URL}/scheduled_members`,
+        `${this.API_BASE_URL}/scheduled_members`,
         {
           params: {
             status: "executed",
@@ -48,4 +52,4 @@ export class ExecutedMembershipGateways {
   }
 }
 export const executedMembershipCancelattionGateway =
-  new ExecutedMembershipGateways();
+  new ExecutedMembershipGateway();

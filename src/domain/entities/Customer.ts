@@ -1,4 +1,4 @@
-import { Email } from "../valueObject/Email";
+import { Email } from "../valueObjects/Email";
 
 export class Customer {
   private _id: string;

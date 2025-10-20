@@ -6,7 +6,7 @@ import { ScrollToTopButton } from "../../primitives/scrollToTopButton/ScrollToTo
 import { SearchBar } from "../../primitives/searchBar/SearchBar";
 import style from "./Customer.module.css";
 import { customerService } from "../../../domain/services/CustomerService";
-import type { DataPage } from "../../../domain/valueObject/DataPage";
+import type { DataPage } from "../../../domain/valueObjects/DataPage";
 import type { Customer } from "../../../domain/entities/Customer";
 import { CustomerTable } from "../../components/customerTable/CustomerTable";
 
@@ -34,7 +34,6 @@ export const CustomerWidget = () => {
 
     fetchCustomers();
   }, [table.currentPage, table.pageSize]);
-
 
   const handleTableChange = (page: number) => {
     setTable((prev) => ({ ...prev, currentPage: page }));

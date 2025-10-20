@@ -1,15 +1,22 @@
 import axios from "axios";
 import type { CustomersDto } from "../dtos/CustomerDto";
-import { Email } from "../../domain/valueObject/Email";
+import { Email } from "../../domain/valueObjects/Email";
 import { Customer } from "../../domain/entities/Customer";
-import { DataPage } from "../../domain/valueObject/DataPage";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { DataPage } from "../../domain/valueObjects/DataPage";
 
 export class CustomerGateway {
+
+private API_BASE_URL: string;
+
+  constructor(baseUrl?: string) {
+    this.API_BASE_URL = baseUrl || import.meta.env.VITE_API_BASE_URL || '';
+  }
+
   async getAll(page: number, pageSize: number): Promise<DataPage<Customer>> {
+
     try {
       const { data } = await axios.get<CustomersDto>(
-      `${API_BASE_URL}/members`,
+      `${this.API_BASE_URL}/members`,
       {
         params:{
           search_text:"",

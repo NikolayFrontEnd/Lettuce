@@ -1,6 +1,6 @@
 import { customerGateway } from "../../dataAccess/gateways/CustomerGateway";
 import type { Customer } from "../entities/Customer";
-import type { DataPage } from "../valueObject/DataPage";
+import type { DataPage } from "../valueObjects/DataPage";
 
 
 export class CustomerService {

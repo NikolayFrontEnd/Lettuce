@@ -1,0 +1,60 @@
+import { describe, expect, vi,it } from "vitest";
+import axios from "axios";
+import { ExecutedMembershipGateway } from "../../src/dataAccess/gateways/ExecutedMembershipGateways";
+
+vi.mock("axios");
+
+describe("ExecutedMembershipGateway", () => {
+  it("getAll calls correct endpoint and constructs entities correctly", async () => {
+    // 1. Подготавливаем мок данных
+    const mockResponse = {
+      data: {
+        items: [
+          {
+            id: "1",
+            member: {
+              id: "10",
+              first_name: "John",
+              last_name: "Doe",
+              email: "john@example.com",
+              phone: "123456",
+            },
+            outcome: "success",
+            created_at: "2023-01-01T00:00:00Z",
+          },
+        ],
+        item_count: 1,
+        page: 1,
+        page_count: 1,
+      },
+    };
+
+    vi.mocked(axios.get).mockResolvedValue(mockResponse);
+
+    const testBaseUrl = "http://test-api.com";
+    const gateway = new ExecutedMembershipGateway(testBaseUrl);
+
+    // 2. Вызываем метод
+    const result = await gateway.getAll(1, 10);
+
+    // 3. Проверяем правильность вызова endpoint
+    expect(axios.get).toHaveBeenCalledWith(`${testBaseUrl}/scheduled_members`, {
+      params: { status: "executed", page: 1, page_size: 10 },
+    });
+
+    // 4. Проверяем корректную конструкцию entity
+    const expectedItem = new ExecutedMembershipCancellation(
+      "1",
+      "John",
+      "Doe",
+      "123456",
+      new Email("john@example.com"),
+      "success",
+      "2023-01-01T00:00:00Z"
+    );
+
+    const expectedDataPage = new DataPage([expectedItem], 1, 1, 1);
+
+    expect(result).toEqual(expectedDataPage);
+  });
+});

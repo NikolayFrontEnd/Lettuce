@@ -1,6 +1,6 @@
 import { scheduledMembershipCancelattionGateway } from "../../dataAccess/gateways/ScheduledMembershipGateways";
 import type { ScheduledMembershipCancellation } from "../entities/ScheduledMembershipCancellation";
-import { DataPage } from "../valueObject/DataPage";
+import { DataPage } from "../valueObjects/DataPage";
 
 export class ScheduledMembershipService {
   async getAllCustomers(
