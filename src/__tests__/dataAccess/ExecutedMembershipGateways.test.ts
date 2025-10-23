@@ -1,9 +1,9 @@
 import { describe, expect, vi,it } from "vitest";
 import axios from "axios";
-import { ExecutedMembershipGateway } from "../../src/dataAccess/gateways/ExecutedMembershipGateways";
-import { Email } from "../../src/domain/valueObjects/Email";
-import { DataPage } from "../../src/domain/valueObjects/DataPage";
-import { ExecutedMembershipCancellation } from "../../src/domain/entities/ExecutedMembershipCancellation";
+import { ExecutedMembershipGateway } from "../../dataAccess/gateways/ExecutedMembershipGateways";
+import { ExecutedMembershipCancellation } from "../../domain/entities/ExecutedMembershipCancellation";
+import { DataPage } from "../../domain/valueObjects/DataPage";
+
 
 vi.mock("axios");
 

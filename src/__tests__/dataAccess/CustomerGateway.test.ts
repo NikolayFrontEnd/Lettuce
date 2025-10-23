@@ -1,9 +1,10 @@
-import { Customer } from "../../src/domain/entities/Customer";
-import { Email } from "../../src/domain/valueObjects/Email";
-import { DataPage } from "../../src/domain/valueObjects/DataPage";
+
 import { describe, expect, vi,it } from "vitest";
 import axios from "axios";
-import { CustomerGateway } from "../../src/dataAccess/gateways/CustomerGateway";
+import { Customer } from "../../domain/entities/Customer";
+import { CustomerGateway } from "../../dataAccess/gateways/CustomerGateway";
+import { DataPage } from "../../domain/valueObjects/DataPage";
+import { Email } from "../../domain/valueObjects/Email";
 
 vi.mock("axios");
 
