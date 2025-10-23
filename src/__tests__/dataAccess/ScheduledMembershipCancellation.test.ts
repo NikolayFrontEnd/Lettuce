@@ -35,7 +35,7 @@ describe("ScheduledMembershipGateway", () => {
     vi.mocked(axios.get).mockResolvedValue(mockResponse);
 
     const testBaseUrl = "http://test-api.com";
-    const gateway = new ScheduledMembershipGateway(testBaseUrl);
+    const gateway = new ScheduledMembershipGateway();
 
     const result = await gateway.getAll(1, 10);
 

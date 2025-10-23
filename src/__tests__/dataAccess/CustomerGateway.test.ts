@@ -27,21 +27,9 @@ describe("CustomerGateway", () => {
     };
 
     vi.mocked(axios.get).mockResolvedValue(mockResponse);
-
-    // Mock the environment variable
     vi.stubEnv('VITE_API_BASE_URL', 'http://test-api.com');
 
-    const gateway = new CustomerGateway(); // No parameters now
-
-    const result = await gateway.getAll(1, 10);
-
-    expect(axios.get).toHaveBeenCalledWith(`http://test-api.com/members`, {
-      params: {
-        search_text: "",
-        page: 1,
-        page_size: 10,
-      }
-    });
+    const gateway = new CustomerGateway();
 
     const expectedCustomer = new Customer(
       "1",
@@ -57,6 +45,16 @@ describe("CustomerGateway", () => {
       1,
       1
     );
+
+    const result = await gateway.getAll(1, 10);
+
+    expect(axios.get).toHaveBeenCalledWith(`http://test-api.com/members`, {
+      params: {
+        search_text: "",
+        page: 1,
+        page_size: 10,
+      }
+    });
 
     expect(result).toEqual(expectedDataPage);
   });
