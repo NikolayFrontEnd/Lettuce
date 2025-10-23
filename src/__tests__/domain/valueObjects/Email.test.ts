@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { Email } from "../../../src/domain/valueObjects/Email";
+import { Email } from "../../../domain/valueObjects/Email";
 
 describe("Email", () => {
   it("creates Email object correctly with valid email", () => {
