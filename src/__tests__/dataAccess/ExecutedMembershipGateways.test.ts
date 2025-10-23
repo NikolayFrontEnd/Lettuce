@@ -28,7 +28,7 @@ describe("ExecutedMembershipGateway", () => {
         item_count: 1,
         page: 1,
         page_count: 1,
-      },
+      }
     };
 
     vi.mocked(axios.get).mockResolvedValue(mockResponse);
@@ -44,7 +44,7 @@ describe("ExecutedMembershipGateway", () => {
       new Email("john@example.com"),
       "success",
       "2023-01-01T00:00:00Z",
-    );
+    )
     
     const expectedDataPage = new DataPage([expectedItem], 1, 1, 1);
 
