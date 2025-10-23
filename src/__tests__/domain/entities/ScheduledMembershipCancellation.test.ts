@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { ScheduledMembershipCancellation } from "../../../src/domain/entities/ScheduledMembershipCancellation";
-import { Email } from "../../../src/domain/valueObjects/Email";
+import { Email } from "../../../domain/valueObjects/Email";
+import { ScheduledMembershipCancellation } from "../../../domain/entities/ScheduledMembershipCancellation";
+
 
 describe("ScheduledMembershipCancellation", () => {
   it("initializes correctly through constructor", () => {
