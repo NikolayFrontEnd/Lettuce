@@ -3,6 +3,7 @@ import axios from "axios";
 import { ExecutedMembershipGateway } from "../../dataAccess/gateways/ExecutedMembershipGateways";
 import { ExecutedMembershipCancellation } from "../../domain/entities/ExecutedMembershipCancellation";
 import { DataPage } from "../../domain/valueObjects/DataPage";
+import { Email } from "../../domain/valueObjects/Email";
 
 
 vi.mock("axios");
