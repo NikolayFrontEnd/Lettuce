@@ -55,6 +55,6 @@ describe("ScheduledMembershipGateway", () => {
       params: { status: "scheduled", page: 1, page_size: 10 },
     });
 
-    expect(result).toEqual(expectedDataPage);
+    expect(result).toStrictEqual(expectedDataPage);
   });
 });
