@@ -8,8 +8,6 @@ export class CustomerGateway {
 
   private readonly API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-
-
   async getAll(page: number, pageSize: number): Promise<DataPage<Customer>> {
 
     try {
