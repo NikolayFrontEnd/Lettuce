@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
-import { ExecutedMembershipService } from "../../../src/domain/services/ExecutedMembershipService";
-import { executedMembershipCancelattionGateway } from "../../../src/dataAccess/gateways/ExecutedMembershipGateways";
+import { ExecutedMembershipService } from "../../../domain/services/ExecutedMembershipService";
+import { executedMembershipCancelattionGateway } from "../../../dataAccess/gateways/ExecutedMembershipGateways";
+
 
 vi.mock("../../../src/dataAccess/gateways/ExecutedMembershipGateways", () => ({
   executedMembershipCancelattionGateway: {
