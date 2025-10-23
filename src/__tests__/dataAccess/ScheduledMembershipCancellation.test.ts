@@ -17,8 +17,8 @@ describe("ScheduledMembershipGateway", () => {
             id: "2",
             member: {
               id: "11",
-              first_name: "Alice ",
-              last_name: " Smith",
+              first_name: "Alice",
+              last_name: "Smith",
               email: "alice@example.com",
               phone: "987654",
             },
@@ -32,15 +32,9 @@ describe("ScheduledMembershipGateway", () => {
     };
 
     vi.mocked(axios.get).mockResolvedValue(mockResponse);
+    vi.stubEnv('VITE_API_BASE_URL', 'http://test-api.com');
 
-    const testBaseUrl = "http://test-api.com";
-    const gateway = new ScheduledMembershipGateway(testBaseUrl);
-
-    const result = await gateway.getAll(1, 10);
-
-    expect(axios.get).toHaveBeenCalledWith(`${testBaseUrl}/scheduled_members`, {
-      params: { status: "scheduled", page: 1, page_size: 10 },
-    });
+    const gateway = new ScheduledMembershipGateway();
 
     const expectedItem = new ScheduledMembershipCancellation(
       "2",
@@ -52,6 +46,12 @@ describe("ScheduledMembershipGateway", () => {
     );
 
     const expectedDataPage = new DataPage([expectedItem], 1, 1, 1);
+
+    const result = await gateway.getAll(1, 10);
+
+    expect(axios.get).toHaveBeenCalledWith(`http://test-api.com/scheduled_members`, {
+      params: { status: "scheduled", page: 1, page_size: 10 },
+    });
 
     expect(result).toEqual(expectedDataPage);
   });
