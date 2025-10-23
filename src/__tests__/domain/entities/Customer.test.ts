@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { Customer } from "../../../src/domain/entities/Customer";
-import { Email } from "../../../src/domain/valueObjects/Email";
+import { Email } from "../../../domain/valueObjects/Email";
+import { Customer } from "../../../domain/entities/Customer";
+
 
 describe("Customer", () => {
   it("initializes correctly through constructor", () => {
