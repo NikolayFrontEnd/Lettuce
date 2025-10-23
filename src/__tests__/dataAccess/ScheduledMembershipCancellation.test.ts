@@ -1,9 +1,10 @@
 import { describe, expect, vi,it } from "vitest";
 import axios from "axios";
-import { ScheduledMembershipGateway } from "../../src/dataAccess/gateways/ScheduledMembershipGateways";
-import { DataPage } from "../../src/domain/valueObjects/DataPage";
-import { ScheduledMembershipCancellation } from "../../src/domain/entities/ScheduledMembershipCancellation";
-import { Email } from "../../src/domain/valueObjects/Email";
+import { ScheduledMembershipGateway } from "../../dataAccess/gateways/ScheduledMembershipGateways";
+import { ScheduledMembershipCancellation } from "../../domain/entities/ScheduledMembershipCancellation";
+import { DataPage } from "../../domain/valueObjects/DataPage";
+import { Email } from "../../domain/valueObjects/Email";
+
 
 vi.mock("axios");
 
