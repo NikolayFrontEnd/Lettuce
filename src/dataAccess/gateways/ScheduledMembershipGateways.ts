@@ -7,11 +7,7 @@ import { ScheduledMembershipCancellation } from "../../domain/entities/Scheduled
 
 export class ScheduledMembershipGateway {
 
-private API_BASE_URL: string;
-
-  constructor(baseUrl?: string) {
-    this.API_BASE_URL = baseUrl || import.meta.env.VITE_API_BASE_URL || '';
-  }
+  private readonly API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   async getAll(
     page: number,
