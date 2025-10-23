@@ -8,9 +8,9 @@ export class CustomerGateway {
 
 private API_BASE_URL: string;
 
-  constructor(baseUrl?: string) {
+   constructor(baseUrl?: string) {
     this.API_BASE_URL = baseUrl || import.meta.env.VITE_API_BASE_URL || '';
-  }
+  } 
 
   async getAll(page: number, pageSize: number): Promise<DataPage<Customer>> {
 
