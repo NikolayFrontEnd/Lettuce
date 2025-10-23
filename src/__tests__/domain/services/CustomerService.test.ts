@@ -2,7 +2,6 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { CustomerService } from "../../../domain/services/CustomerService";
 import { customerGateway } from "../../../dataAccess/gateways/CustomerGateway";
 
-
 vi.mock("../../../dataAccess/gateways/CustomerGateway", () => ({
   customerGateway: {
     getAll: vi.fn(),
