@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
-import { CustomerService } from "../../../src/domain/services/CustomerService";
-import { customerGateway } from "../../../src/dataAccess/gateways/CustomerGateway";
+import { CustomerService } from "../../../domain/services/CustomerService";
+import { customerGateway } from "../../../dataAccess/gateways/CustomerGateway";
+
 
 vi.mock("../../../src/dataAccess/gateways/CustomerGateway", () => ({
   customerGateway: {
