@@ -10,7 +10,7 @@ describe("DataPage", () => {
 
     const dataPage = new DataPage(items, 2, 1, 1);
 
-    expect(dataPage.items).toEqual(items);
+    expect(dataPage.items).toStrictEqual(items);
     expect(dataPage.itemCount).toBe(2);
     expect(dataPage.page).toBe(1);
     expect(dataPage.pageCount).toBe(1);

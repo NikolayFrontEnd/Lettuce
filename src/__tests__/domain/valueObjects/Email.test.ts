@@ -7,8 +7,20 @@ describe("Email", () => {
     expect(email.toString()).toBe("test@example.com");
   });
 
-  it("throws error when email is invalid", () => {
-    expect(() => new Email("wrong-email")).toThrowError("Wrong email format");
-    expect(() => new Email("")).toThrowError("Wrong email format");
+  describe("throws error when email is invalid", () => {
+    const invalidCases = [
+      { input: "wrong-email", expectedError: "Wrong email format" },
+      { input: "", expectedError: "Wrong email format" },
+      { input: "a@b", expectedError: "Wrong email format" },
+      { input: "@example.com", expectedError: "Wrong email format" },
+      { input: "test@", expectedError: "Wrong email format" },
+    ];
+
+    it.each(invalidCases)(
+      "throws warnin for input input",
+      ({ input, expectedError }) => {
+        expect(() => new Email(input)).toThrowError(expectedError);
+      }
+    );
   });
 });
