@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { ScheduledMembershipService } from "../../../domain/services/ScheduledMembershipService";
 import { scheduledMembershipCancelattionGateway } from "../../../dataAccess/gateways/ScheduledMembershipGateways";
 
-vi.mock("../../../src/dataAccess/gateways/ScheduledMembershipGateways", () => ({
+vi.mock("../../../dataAccess/gateways/ScheduledMembershipGateways", () => ({
   scheduledMembershipCancelattionGateway: {
     getAll: vi.fn(),
   },

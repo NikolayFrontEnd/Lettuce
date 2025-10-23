@@ -1,4 +1,4 @@
-import { describe, expect, vi, it } from "vitest";
+import { describe, expect, vi, it, beforeEach } from "vitest";
 import axios from "axios";
 import { Customer } from "../../domain/entities/Customer";
 import { CustomerGateway } from "../../dataAccess/gateways/CustomerGateway";
@@ -8,6 +8,10 @@ import { Email } from "../../domain/valueObjects/Email";
 vi.mock("axios");
 
 describe("CustomerGateway", () => {
+  beforeEach(() => {
+    vi.stubEnv('VITE_API_BASE_URL', 'http://test-api.com');
+  });
+
   it("getAll calls correct endpoint and make entity correctly from JSON", async () => {
     const mockResponse = {
       data: {
@@ -15,7 +19,7 @@ describe("CustomerGateway", () => {
           {
             id: "1",
             first_name: "John",
-            last_name: " Doe",
+            last_name: "Doe",
             email: "mail@example.com",
             phone_number: "123456789",
           },
@@ -27,7 +31,6 @@ describe("CustomerGateway", () => {
     };
 
     vi.mocked(axios.get).mockResolvedValue(mockResponse);
-    vi.stubEnv('VITE_API_BASE_URL', 'http://test-api.com');
 
     const gateway = new CustomerGateway();
 

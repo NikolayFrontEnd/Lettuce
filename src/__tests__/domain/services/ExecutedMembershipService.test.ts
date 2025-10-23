@@ -3,7 +3,7 @@ import { ExecutedMembershipService } from "../../../domain/services/ExecutedMemb
 import { executedMembershipCancelattionGateway } from "../../../dataAccess/gateways/ExecutedMembershipGateways";
 
 
-vi.mock("../../../src/dataAccess/gateways/ExecutedMembershipGateways", () => ({
+vi.mock("../../../dataAccess/gateways/ExecutedMembershipGateways", () => ({
   executedMembershipCancelattionGateway: {
     getAll: vi.fn(),
   },
