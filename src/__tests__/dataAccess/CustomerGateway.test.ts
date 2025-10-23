@@ -59,6 +59,6 @@ describe("CustomerGateway", () => {
       }
     });
 
-    expect(result).toEqual(expectedDataPage);
+    expect(result).toStrictEqual(expectedDataPage);
   });
 });

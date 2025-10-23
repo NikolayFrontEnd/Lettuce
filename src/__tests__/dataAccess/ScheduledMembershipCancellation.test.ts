@@ -34,7 +34,6 @@ describe("ScheduledMembershipGateway", () => {
     vi.mocked(axios.get).mockResolvedValue(mockResponse);
     vi.stubEnv('VITE_API_BASE_URL', 'http://test-api.com');
 
-    const gateway = new ScheduledMembershipGateway();
 
     const expectedItem = new ScheduledMembershipCancellation(
       "2",
@@ -45,6 +44,9 @@ describe("ScheduledMembershipGateway", () => {
       "2023-05-05T12:00:00Z"
     );
 
+    const gateway = new ScheduledMembershipGateway();
+
+    
     const expectedDataPage = new DataPage([expectedItem], 1, 1, 1);
 
     const result = await gateway.getAll(1, 10);
