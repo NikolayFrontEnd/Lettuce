@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { ScheduledMembershipService } from "../../../src/domain/services/ScheduledMembershipService";
-import { scheduledMembershipCancelattionGateway } from "../../../src/dataAccess/gateways/ScheduledMembershipGateways";
+import { ScheduledMembershipService } from "../../../domain/services/ScheduledMembershipService";
+import { scheduledMembershipCancelattionGateway } from "../../../dataAccess/gateways/ScheduledMembershipGateways";
 
 vi.mock("../../../src/dataAccess/gateways/ScheduledMembershipGateways", () => ({
   scheduledMembershipCancelattionGateway: {
