@@ -6,6 +6,7 @@ import { ExecutedMembershipCancellation } from "../../domain/entities/ExecutedMe
 
 
 export class ExecutedMembershipGateway {
+
   private readonly API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   async getAll(
@@ -22,7 +23,7 @@ export class ExecutedMembershipGateway {
             page_size: pageSize,
           },
         }
-      );
+      )
 
       const items = data.items.map((item) => {
         const email = item.member.email ? new Email(item.member.email) : null;
@@ -34,7 +35,7 @@ export class ExecutedMembershipGateway {
           email,
           item.outcome,
           item.created_at,
-        );
+        )
       });
 
       return new DataPage<ExecutedMembershipCancellation>(

@@ -6,11 +6,9 @@ import { DataPage } from "../../domain/valueObjects/DataPage";
 
 export class CustomerGateway {
 
-private API_BASE_URL: string;
+  private readonly API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-   constructor(baseUrl?: string) {
-    this.API_BASE_URL = baseUrl || import.meta.env.VITE_API_BASE_URL || '';
-  } 
+
 
   async getAll(page: number, pageSize: number): Promise<DataPage<Customer>> {
 
