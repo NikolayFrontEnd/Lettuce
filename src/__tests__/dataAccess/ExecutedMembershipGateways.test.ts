@@ -5,7 +5,6 @@ import { ExecutedMembershipCancellation } from "../../domain/entities/ExecutedMe
 import { DataPage } from "../../domain/valueObjects/DataPage";
 import { Email } from "../../domain/valueObjects/Email";
 
-
 vi.mock("axios");
 
 describe("ExecutedMembershipGateway", () => {
@@ -33,15 +32,9 @@ describe("ExecutedMembershipGateway", () => {
     };
 
     vi.mocked(axios.get).mockResolvedValue(mockResponse);
+    vi.stubEnv('VITE_API_BASE_URL', 'http://test-api.com');
 
-    const testBaseUrl = "http://test-api.com";
     const gateway = new ExecutedMembershipGateway();
-
-    const result = await gateway.getAll(1, 10);
-
-    expect(axios.get).toHaveBeenCalledWith(`${testBaseUrl}/scheduled_members`, {
-      params: { status: "executed", page: 1, page_size: 10 },
-    });
 
     const expectedItem = new ExecutedMembershipCancellation(
       "1",
@@ -52,7 +45,15 @@ describe("ExecutedMembershipGateway", () => {
       "success",
       "2023-01-01T00:00:00Z",
     );
+    
     const expectedDataPage = new DataPage([expectedItem], 1, 1, 1);
+
+    const result = await gateway.getAll(1, 10);
+
+    expect(axios.get).toHaveBeenCalledWith(`http://test-api.com/scheduled_members`, {
+      params: { status: "executed", page: 1, page_size: 10 },
+    });
+
     expect(result).toEqual(expectedDataPage);
   });
 });

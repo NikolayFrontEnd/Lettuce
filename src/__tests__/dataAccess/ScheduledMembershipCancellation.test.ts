@@ -5,7 +5,6 @@ import { ScheduledMembershipCancellation } from "../../domain/entities/Scheduled
 import { DataPage } from "../../domain/valueObjects/DataPage";
 import { Email } from "../../domain/valueObjects/Email";
 
-
 vi.mock("axios");
 
 describe("ScheduledMembershipGateway", () => {
@@ -35,7 +34,7 @@ describe("ScheduledMembershipGateway", () => {
     vi.mocked(axios.get).mockResolvedValue(mockResponse);
 
     const testBaseUrl = "http://test-api.com";
-    const gateway = new ScheduledMembershipGateway();
+    const gateway = new ScheduledMembershipGateway(testBaseUrl);
 
     const result = await gateway.getAll(1, 10);
 
