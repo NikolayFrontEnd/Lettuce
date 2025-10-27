@@ -1,4 +1,4 @@
-import { describe, expect, vi,it } from "vitest";
+import { describe, expect, vi, it, beforeEach } from "vitest";
 import axios from "axios";
 import { ExecutedMembershipGateway } from "../../dataAccess/gateways/ExecutedMembershipGateways";
 import { ExecutedMembershipCancellation } from "../../domain/entities/ExecutedMembershipCancellation";
@@ -8,50 +8,72 @@ import { Email } from "../../domain/valueObjects/Email";
 vi.mock("axios");
 
 describe("ExecutedMembershipGateway", () => {
+  const mockedBaseUrl = "http://test-api.com";
+  const mockedPath = "scheduled_members";
+  const mockedStatus = "executed";
+
+  const mockedId = "1";
+  const mockedMemberId = "10";
+  const mockedFirstName = "John";
+  const mockedLastName = "Doe";
+  const mockedEmailValue = "john@example.com";
+  const mockedEmail = new Email(mockedEmailValue);
+  const mockedPhone = "123456";
+  const mockedOutcome = "success";
+  const mockedCreatedAt = "2023-01-01T00:00:00Z";
+
+  const mockedItemCount = 1;
+  const mockedPageNumber = 1;
+  const mockedPageSize = 10;
+  const mockedPageCount = 1;
+
+  beforeEach(() => {
+    vi.stubEnv("VITE_API_BASE_URL", mockedBaseUrl);
+  });
+
   it("getAll calls correct endpoint and constructs entities correctly", async () => {
     const mockedResponse = {
       data: {
         items: [
           {
-            id: "1",
+            id: mockedId,
             member: {
-              id: "10",
-              first_name: "John",
-              last_name: "Doe",
-              email: "john@example.com",
-              phone: "123456",
+              id: mockedMemberId,
+              first_name: mockedFirstName,
+              last_name: mockedLastName,
+              email: mockedEmailValue,
+              phone: mockedPhone,
             },
-            outcome: "success",
-            created_at: "2023-01-01T00:00:00Z",
+            outcome: mockedOutcome,
+            created_at: mockedCreatedAt,
           },
         ],
-        item_count: 1,
-        page: 1,
-        page_count: 1,
-      }
+        item_count: mockedItemCount,
+        page: mockedPageNumber,
+        page_count: mockedPageCount,
+      },
     };
 
     vi.mocked(axios.get).mockResolvedValue(mockedResponse);
-    vi.stubEnv('VITE_API_BASE_URL', 'http://test-api.com');
-
 
     const expectedItem = new ExecutedMembershipCancellation(
-      "1",
-      "John",
-      "Doe",
-      "123456",
-      new Email("john@example.com"),
-      "success",
-      "2023-01-01T00:00:00Z",
-    )
-        const gateway = new ExecutedMembershipGateway();
+      mockedId,
+      mockedFirstName,
+      mockedLastName,
+      mockedPhone,
+      mockedEmail,
+      mockedOutcome,
+      mockedCreatedAt
+    );
 
-    const expectedDataPage = new DataPage([expectedItem], 1, 1, 1);
+    const gateway = new ExecutedMembershipGateway();
 
-    const result = await gateway.getAll(1, 10);
+    const expectedDataPage = new DataPage([expectedItem], mockedItemCount, mockedPageNumber, mockedPageCount);
 
-    expect(axios.get).toHaveBeenCalledWith(`http://test-api.com/scheduled_members`, {
-      params: { status: "executed", page: 1, page_size: 10 },
+    const result = await gateway.getAll(mockedPageNumber, mockedPageSize);
+
+    expect(axios.get).toHaveBeenCalledWith(`${mockedBaseUrl}/${mockedPath}`, {
+      params: { status: mockedStatus, page: mockedPageNumber, page_size: mockedPageSize },
     });
 
     expect(result).toStrictEqual(expectedDataPage);
