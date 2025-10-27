@@ -13,7 +13,7 @@ describe("CustomerGateway", () => {
   });
 
   it("getAll calls correct endpoint and make entity correctly from JSON", async () => {
-    const mockResponse = {
+    const mockedResponse = {
       data: {
         items: [
           {
@@ -30,7 +30,7 @@ describe("CustomerGateway", () => {
       },
     };
 
-    vi.mocked(axios.get).mockResolvedValue(mockResponse);
+    vi.mocked(axios.get).mockResolvedValue(mockedResponse);
 
     const gateway = new CustomerGateway();
 
