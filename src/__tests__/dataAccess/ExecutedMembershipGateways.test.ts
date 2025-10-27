@@ -9,7 +9,7 @@ vi.mock("axios");
 
 describe("ExecutedMembershipGateway", () => {
   it("getAll calls correct endpoint and constructs entities correctly", async () => {
-    const mockResponse = {
+    const mockedResponse = {
       data: {
         items: [
           {
@@ -31,7 +31,7 @@ describe("ExecutedMembershipGateway", () => {
       }
     };
 
-    vi.mocked(axios.get).mockResolvedValue(mockResponse);
+    vi.mocked(axios.get).mockResolvedValue(mockedResponse);
     vi.stubEnv('VITE_API_BASE_URL', 'http://test-api.com');
 
 
