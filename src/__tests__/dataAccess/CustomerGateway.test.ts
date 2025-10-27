@@ -8,8 +8,24 @@ import { Email } from "../../domain/valueObjects/Email";
 vi.mock("axios");
 
 describe("CustomerGateway", () => {
+  const mockedBaseUrl = "http://test-api.com";
+  const mockedPath = "members";
+
+  const mockedId = "1";
+  const mockedFirstName = "John";
+  const mockedLastName = "Doe";
+  const mockedEmailValue = "mail@example.com";
+  const mockedEmail = new Email(mockedEmailValue);
+  const mockedPhoneNumber = "123456789";
+
+  const mockedSearchText = "";
+  const mockedPageNumber = 1;
+  const mockedPageSize = 10;
+  const mockedItemCount = 1;
+  const mockedPageCount = 1;
+
   beforeEach(() => {
-    vi.stubEnv('VITE_API_BASE_URL', 'http://test-api.com');
+    vi.stubEnv("VITE_API_BASE_URL", mockedBaseUrl);
   });
 
   it("getAll calls correct endpoint and make entity correctly from JSON", async () => {
@@ -17,16 +33,16 @@ describe("CustomerGateway", () => {
       data: {
         items: [
           {
-            id: "1",
-            first_name: "John",
-            last_name: "Doe",
-            email: "mail@example.com",
-            phone_number: "123456789",
+            id: mockedId,
+            first_name: mockedFirstName,
+            last_name: mockedLastName,
+            email: mockedEmailValue,
+            phone_number: mockedPhoneNumber,
           },
         ],
-        item_count: 1,
-        page: 1,
-        page_count: 1,
+        item_count: mockedItemCount,
+        page: mockedPageNumber,
+        page_count: mockedPageCount,
       },
     };
 
@@ -35,28 +51,28 @@ describe("CustomerGateway", () => {
     const gateway = new CustomerGateway();
 
     const expectedCustomer = new Customer(
-      "1",
-      "John",
-      "Doe",
-      new Email("mail@example.com"),
-      "123456789"
+      mockedId,
+      mockedFirstName,
+      mockedLastName,
+      mockedEmail,
+      mockedPhoneNumber
     );
 
     const expectedDataPage = new DataPage<Customer>(
       [expectedCustomer],
-      1,
-      1,
-      1
+      mockedItemCount,
+      mockedPageNumber,
+      mockedPageCount
     );
 
-    const result = await gateway.getAll(1, 10);
+    const result = await gateway.getAll(mockedPageNumber, mockedPageSize);
 
-    expect(axios.get).toHaveBeenCalledWith(`http://test-api.com/members`, {
+    expect(axios.get).toHaveBeenCalledWith(`${mockedBaseUrl}/${mockedPath}`, {
       params: {
-        search_text: "",
-        page: 1,
-        page_size: 10,
-      }
+        search_text: mockedSearchText,
+        page: mockedPageNumber,
+        page_size: mockedPageSize,
+      },
     });
 
     expect(result).toStrictEqual(expectedDataPage);
